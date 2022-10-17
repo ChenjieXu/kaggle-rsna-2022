@@ -1,0 +1,48 @@
+exp_name: exp2
+description: efficientnet-b2
+Global:
+  epoch_num: 2000
+  output_dir: ./output/
+  validation_every_n_epochs: 10
+  num_classes: 8
+  weights: 
+
+Model:
+  architecture: efficientnet-b2
+  activation: Sigmoid
+  input_size: !!python/tuple
+  - 80
+  - 224
+  - 224
+
+Loss:
+  name: CustomLoss
+
+Optimizer:
+  name: Adam
+  lr: 0.001
+  beta1: 0.9
+  beta2: 0.999
+
+Lr_scheduler:
+  name: warmup_restart
+  
+#####data
+Dataset:
+    dataset_dir: /ssd/xuchenjie/projects/cervical/datasets
+    test_size: 0.2
+    image_dir: train_pt
+    anno_path: train.csv
+
+TrainReader:
+  batch_size: 8
+  num_workers: 6
+  shuffle: false
+  drop_last: false
+ValReader:
+  batch_size: 8
+  num_workers: 6
+  shuffle: false
+  drop_last: false
+TestReader:
+  batch_size: 8
