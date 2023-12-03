@@ -1,14 +1,14 @@
-exp_name: exp2
-description: efficientnet-b2
+exp_name: baseline2
+description: baseline+augmentation
 Global:
-  epoch_num: 2000
+  epoch_num: 300
   output_dir: ./output/
-  validation_every_n_epochs: 10
+  validation_every_n_epochs: 5
   num_classes: 8
-  weights: 
+  weights: /ssd/xuchenjie/projects/cervical/output/baseline1/models/rsna-epoch=139-val_loss=0.514.ckpt
 
 Model:
-  architecture: efficientnet-b2
+  architecture: DenseNet
   activation: Sigmoid
   input_size: !!python/tuple
   - 80
@@ -20,12 +20,12 @@ Loss:
 
 Optimizer:
   name: Adam
-  lr: 0.0001
+  lr: 0.00001
   beta1: 0.9
   beta2: 0.999
 
 Lr_scheduler:
-  name: warmup_restart
+  name: cosine
   
 #####data
 Dataset:
@@ -35,14 +35,14 @@ Dataset:
     anno_path: train.csv
 
 TrainReader:
-  batch_size: 8
+  batch_size: 16
   num_workers: 6
   shuffle: false
   drop_last: false
 ValReader:
-  batch_size: 8
+  batch_size: 16
   num_workers: 6
   shuffle: false
   drop_last: false
 TestReader:
-  batch_size: 8
+  batch_size: 16

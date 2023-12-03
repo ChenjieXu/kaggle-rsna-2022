@@ -10,6 +10,10 @@ __pycache__/
 inference/
 inference_results/
 output/
+wandb/
+datasets/
+*.out
+logs/
 
 *.DS_Store
 *.vs

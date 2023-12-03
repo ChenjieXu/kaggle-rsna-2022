@@ -4,8 +4,8 @@
 Author       : ChenjieXu
 Date         : 2022-10-06 23:06:53
 LastEditors  : ChenjieXu
-LastEditTime : 2022-10-17 21:49:16
-FilePath     : /cervical/train.py
+LastEditTime : 2022-10-23 10:02:49
+FilePath     : /projects/cervical/train.py
 Description  : 
 '''
 
@@ -38,7 +38,7 @@ def run(args):
     cfg = load_config(args.config)
     save_config(cfg)
 
-    cfg.devices = [1, 2, 3, 4, 5, 6, 7]
+    cfg.devices = [2]
     cfg.Optimizer.lr *= len(cfg.devices) if isinstance(
         cfg.devices, list) else int(cfg.devices)
     

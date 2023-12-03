@@ -11,12 +11,12 @@ Model:
   architecture: DenseNet169
   activation: Sigmoid
   input_size: !!python/tuple
-  - 256
+  - 128
   - 256
   - 256
 
 Loss:
-  name: CustomWithLoss
+  name: CustomLoss
 
 Optimizer:
   name: Adam
